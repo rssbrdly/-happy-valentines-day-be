@@ -1,0 +1,143 @@
+body {
+    font-family: sans-serif;
+    background-color: #e4bcfd; /* Seashell pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.container {
+    background-color: transparent; /* Remove white background */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(72, 72, 72, 0.1);
+    width: 300px;
+    position: relative;
+    background-image: url("WALL.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.time {
+    font-size: 16px;
+    color: white; /* Time in white */
+}
+
+.battery {
+    font-size: 16px;
+    color: white; /* Battery in white */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lock-icon img {
+    width: 150px; /* Increased width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white; /* Title in white */
+}
+
+.hint {
+    font-size: 13px;
+    color: #eae5f3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.heart-balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.heart-balloons img {
+    position: absolute;
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    /* Initial positions (you'll likely adjust these in JavaScript) */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the hearts */
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #676767;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    background-color: rgb(113, 113, 113);
+    color: white; /* Input text in white */
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.keypad button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(176, 176, 176, 0.7); /* Semi-transparent light gray */
+    font-size: 20px;
+    cursor: pointer;
+    color: white; /* Keypad text color */
+}
+
+.keypad button.unlock {
+    background-color: #8a0dff; /* Pink unlock button */
+    color: rgb(223, 219, 219);
+}
+
+.heart-icon {
+    position: absolute;
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+}
+
+.heart-icon.left {
+    top: 20px;
+    left: 10px;
+}
+
+.heart-icon.right {
+    top: 20px;
+    right: 10px;
+}
+
+.heart-icon img {
+    max-width: 100%;
+    height: auto;
+}

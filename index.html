@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lock Screen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="time" id="current-time"></span>
+            <span class="battery">1020%</span>
+        </div>
+        <div class="content">
+            <div class="lock-icon">
+                <img src="happy valentines day.png" alt="Lock Icon">
+            </div>
+            <div class="title">Enter Secret Code</div>
+            <div class="hint">Hint: A special you birthday code (MMDD)</div>
+
+            <div class="heart-balloons"></div>
+
+            <div class="input-field">
+                <input type="password" id="code" maxlength="6" readonly>
+            </div>
+            <div class="keypad">
+                <button onclick="appendToCode('1')">1</button>
+                <button onclick="appendToCode('2')">2</button>
+                <button onclick="appendToCode('3')">3</button>
+                <button onclick="appendToCode('4')">4</button>
+                <button onclick="appendToCode('5')">5</button>
+                <button onclick="appendToCode('6')">6</button>
+                <button onclick="appendToCode('7')">7</button>
+                <button onclick="appendToCode('8')">8</button>
+                <button onclick="appendToCode('9')">9</button>
+                <button onclick="appendToCode('0')">0</button>
+                <button class="delete" onclick="deleteLastDigit()">X</button>
+                <button class="unlock" onclick="checkCode()">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let code = "";
+        const codeField = document.getElementById("code");
+
+        function appendToCode(digit) {
+            if (code.length < 6) {
+                code += digit;
+                codeField.value = code;
+            }
+        }
+
+        function deleteLastDigit() {
+            code = code.slice(0, -1);
+            codeField.value = code;
+        }
+
+        function checkCode() {
+            const correctCode = "1020"; // **REPLACE with the actual correct birthday (MMDD)**
+            if (code === correctCode) {
+                window.location.href = "https://kuromiiii2024.github.io/nicsss/FLORES.html";
+            } else {
+                alert("Incorrect code. Please try again.");
+                code = "";
+                codeField.value = "";
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById("current-time").textContent = timeString;
+        }
+
+        updateClock(); // Initial call
+        setInterval(updateClock, 1000); // Update every second
+
+
+        // Add heart balloon elements dynamically
+        const heartBalloonsContainer = document.querySelector('.heart-balloons');
+        const numHearts = 5; // Number of hearts
+
+        for (let i = 0; i < numHearts; i++) {
+            const heart = document.createElement('img');
+            heart.src = 'heart.png'; // Path to your heart image
+            heart.style.left = `${Math.random() * 100}%`; // Random horizontal position
+            heart.style.top = `${Math.random() * 100}%`;  // Random vertical position
+            heartBalloonsContainer.appendChild(heart);
+        }
+
+        // Basic animation (you'll likely want to use a library for smoother animation)
+        const hearts = document.querySelectorAll('.heart-balloons img');
+
+        function animateHearts() {
+            hearts.forEach(heart => {
+                // Example: Move hearts up slightly
+                let top = parseFloat(heart.style.top);
+                heart.style.top = `${top - 0.5}%`; // Adjust speed here
+
+                // Reset position if heart goes off-screen
+                if (top < -10) {
+                    heart.style.top = '100%';
+                    heart.style.left = `${Math.random() * 100}%`; // Random horizontal position
+                }
+            });
+
+            requestAnimationFrame(animateHearts); // Smooth animation loop
+        }
+
+        animateHearts(); // Start the animation
+    </script>
+</body>
+</html>
